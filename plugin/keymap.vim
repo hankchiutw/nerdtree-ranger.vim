@@ -13,8 +13,14 @@
 call NERDTreeAddKeyMap({
       \ 'key': 'l',
       \ 'callback': 'NERDTreeCustomOpenDir',
-      \ 'quickhelpText': 'open the current di node',
+      \ 'quickhelpText': 'open the current dir node',
       \ 'scope': 'DirNode' })
+
+call NERDTreeAddKeyMap({
+      \ 'key': 'l',
+      \ 'callback': 'NERDTreeCustomOpenFile',
+      \ 'quickhelpText': 'open the current file node',
+      \ 'scope': 'FileNode' })
 
 call NERDTreeAddKeyMap({
       \ 'key': 'h',
@@ -38,6 +44,11 @@ function! NERDTreeCustomOpenDir(node)
 
     call a:node.open()
     call b:NERDTree.render()
+endfunction
+
+" Open the file
+function! NERDTreeCustomOpenFile(node)
+  execute "normal o"
 endfunction
 
 " Close current node
